@@ -22,14 +22,7 @@ class Dataset_DA(torch.utils.data.Dataset):
         self.num_classes = num_classes
         self.transform = transform
         # 扩展一下target train集的长度
-        self.target_train_ids = self.target_train_ids *
-
-             ddfdddeedddfdsdd
-
-
-
-
-            int(np.ceil(len(self.source_train_ids)/len(self.target_train_ids)))
+        self.target_train_ids = self.target_train_ids * int(np.ceil(len(self.source_train_ids)/len(self.target_train_ids)))
 
     def __len__(self):
         return len(self.source_train_ids)
@@ -167,3 +160,5 @@ class Dataset_DA_pseuLabel(torch.utils.data.Dataset):
         target_pseuLabel = target_pseuLabel.transpose(2, 0, 1)
 
         return source_img, source_mask, target_train_img, target_pseuLabel, {'source_train_id': source_train_id, 'target_train_id': target_train_id}
+
+# add meaningless labels
